@@ -8,6 +8,8 @@
 
 namespace Poker::Model
 {
+
+// todo class needs re-design, the best hand is indeed 5, but its best 5 out of 7. Handling of combination required
 class Hand final
 {
     public:
