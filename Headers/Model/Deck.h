@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Card.h"
+#include <Model/Card.h>
 
 #include <memory>
 #include <vector>
