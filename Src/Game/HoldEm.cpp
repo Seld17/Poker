@@ -16,11 +16,9 @@ constexpr auto CHECK{ "CHECK" };
 
 }
 
-
 HoldEm::HoldEm(std::vector<std::string> playerOder, std::map<std::string, std::unique_ptr<Model::Player>> players)
-    : mPlayerOrder(std::move(playerOder))
+    : IPokerGame(std::move(playerOder))
     , mTable(Model::Table(std::move(players), std::make_unique<Model::Deck>()))
-    , mRemainingPlayerOrder(mPlayerOrder)
 {
 }
 
@@ -52,7 +50,6 @@ void HoldEm::PlayRound()
     // assign winner
     // todo pot distribution affected by tie breakers
     mTable.DistributePot(winnner);
-
 }
 
 void HoldEm::BettingRound() 
