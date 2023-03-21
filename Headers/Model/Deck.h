@@ -5,7 +5,7 @@
 #include <memory>
 #include <vector>
 
-namespace Solitaire::Model
+namespace Poker::Model
 {
 class Deck final
 {
@@ -49,4 +49,4 @@ class Deck final
     /// Container of cards
     std::vector<std::shared_ptr<Card>> mCards;
 };
-} // namespace Solitaire::Model
+} // namespace Poker::Model

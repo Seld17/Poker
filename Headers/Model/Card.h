@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace Solitaire::Model
+namespace Poker::Model
 {
 class Card final
 {
@@ -67,4 +67,4 @@ class Card final
     /// Card Value
     Ranks mRank;
 };
-} // namespace Solitaire::Model
+} // namespace Poker::Model

@@ -8,7 +8,7 @@ namespace
 constexpr int DECK_SIZE{ 52 };
 }
 
-namespace Solitaire::Model
+namespace Poker::Model
 {
 
 Deck::Deck() : mRemainingCards(DECK_SIZE)
@@ -69,4 +69,4 @@ int Deck::GetRemaingingDeckSize() const
     return mRemainingCards;
 }
 
-} // namespace Solitaire::Model
+} // namespace Poker::Model

@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace Solitaire::Model
+namespace Poker::Model
 {
 Card::Card(Suits s, Ranks r) : mSuit(s), mRank(r) {}
 
@@ -100,4 +100,4 @@ int Card::GetSuit() const
 }
 
 // clang-format on
-} // namespace Solitaire::Model
+} // namespace Poker::Model
