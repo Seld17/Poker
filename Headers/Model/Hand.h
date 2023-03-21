@@ -15,6 +15,7 @@ class Hand final
     Hand() = default;
 
     /// Constructor
+    /// \throw if number of cards is greater than 5
     explicit Hand(std::vector<std::shared_ptr<Card>> cards);
 
     /// Default copy constructor
