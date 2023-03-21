@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (Poker "Poker.cpp" "Poker.h" "Headers/Model/Card.h" "Src/Model/Card.cpp" "Headers/Model/Deck.h" "Src/Model/Deck.cpp" "Headers/Model/Player.h" "Src/Model/Player.cpp")
+add_executable (Poker "Poker.cpp" "Poker.h" "Headers/Model/Card.h" "Src/Model/Card.cpp" "Headers/Model/Deck.h" "Src/Model/Deck.cpp" "Headers/Model/Player.h" "Src/Model/Player.cpp" "Headers/Model/Hand.h" "Src/Model/Hand.cpp")
 
 include_directories(headers)
 
