@@ -17,6 +17,7 @@ class Card final
     };
     enum class Ranks
     {
+        // todo verify if ace is top or bottom value + hand value implications
         E_ACE = 0,
         E_TWO,
         E_THREE,

@@ -47,6 +47,7 @@ int Hand::GetHandValue()
     }
 
     // todo implement other hand values
+    return 0;
 }
 
 void Hand::AddCards(std::vector<std::shared_ptr<Card>> cards)
@@ -78,7 +79,7 @@ void Hand::DiscardHand()
 void Hand::SortCards()
 {
     // todo a custom container that sorts by rank by definition might be better
-    std::sort(mCards.begin(), mCards.end(), [](const Card& a, const Card& b) { return a.GetRank() < b.GetRank(); });
+    std::sort(mCards.begin(), mCards.end(), [](const std::shared_ptr<Card>& a, const std::shared_ptr<Card>& b) { return a->GetRank() < b->GetRank(); });
 }
 
 bool Hand::isStraightFlush() const
@@ -134,3 +135,4 @@ bool Hand::isFourOfaKind() const
 
     return isFourOfAKind;
 }
+} // namespace Poker::Model

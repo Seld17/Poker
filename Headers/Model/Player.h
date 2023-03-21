@@ -1,14 +1,14 @@
 
 #pragma once
 
-#include <Model/Hand.h>
 #include <Model/Card.h>
+#include <Model/Hand.h>
 
 namespace Poker::Model
 {
 class Player
 {
-public:
+    public:
     /// Constructor
     explicit Player(unsigned int cash);
 
@@ -32,11 +32,11 @@ public:
 
     void AddCards(std::vector<std::shared_ptr<Card>> cards);
 
-private:
-    /// Players betting money
+    protected:
+    /// Players betting money, avoiding decimals for simplicity
     unsigned int mCash;
-    
+
     /// Players current hand
     Hand mHand;
 };
-} // namespace Poker
+} // namespace Poker::Model
