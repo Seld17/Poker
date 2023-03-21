@@ -66,7 +66,7 @@ void Hand::AddCards(std::vector<std::shared_ptr<Card>> cards)
 
     for(const auto& card : cards)
     {
-        mCards.emplace_back(std::move(card));
+        mCards.emplace_back(card);
     }
     SortCards();
 }
