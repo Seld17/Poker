@@ -8,6 +8,7 @@
 #include <Model/Deck.h>
 #include <Model/Player.h>
 
+#include <map>
 #include <memory>
 
 int main()
@@ -17,11 +18,12 @@ int main()
     using namespace Poker::Model;
     const auto deck = std::make_unique<Deck>();
     // init players
-    std::vector<std::unique_ptr<Player>> players;
-    players.push_back(std::make_unique<Player>(100));
-    players.push_back(std::make_unique<Player>(100));
-    players.push_back(std::make_unique<Blind>(100, 10));
-    players.push_back(std::make_unique<Blind>(100, 5));
+    std::vector<std::string> playerOder{ "Alice", "Bob", "Tom", "Jim" };
+    std::map<std::string, std::unique_ptr<Player>> players;
+    for(const auto& player : playerOder)
+    {
+        players[player] = std::make_unique<Player>(100);
+    }
 
     // struct player order
 

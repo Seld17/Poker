@@ -24,4 +24,9 @@ void Player::AddCards(std::vector<std::shared_ptr<Card>> cards)
     mHand.AddCards(cards); 
 }
 
+void Player::WinPot(unsigned int pot) 
+{
+    mCash += pot;
+}
+
 } // namespace Poker::Model

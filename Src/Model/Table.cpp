@@ -4,8 +4,9 @@
 
 namespace Poker::Model
 {
-Table::Table(std::vector<std::unique_ptr<Player>> players, std::unique_ptr<Deck> deck)
+Table::Table(std::vector<std::string> playerOder, std::map<std::string, std::unique_ptr<Player>> players, std::unique_ptr<Deck> deck)
     : mPot(0)
+    , mOrder(playerOder)
     , mPlayers(std::move(players))
     , mDeck(std::move(deck))
 {
@@ -14,11 +15,11 @@ Table::Table(std::vector<std::unique_ptr<Player>> players, std::unique_ptr<Deck>
 void Table::DealPlayerHand()
 {
     // todo learn and implement blind changes and changes to player order
-    for(const auto& player : mPlayers)
+    for(const auto& player : mOrder)
     {
         const auto card1 = mDeck->PickTopCard();
         const auto card2 = mDeck->PickTopCard();
-        player->AddCards({ card1, card2 });
+        mPlayers.at(player)->AddCards({ card1, card2 });
     }
 }
 
@@ -42,6 +43,12 @@ void Table::AddCommunityCards(unsigned int numberToFlip)
 
 void Table::AddToPot(unsigned int bet) 
 {
-    mPot += bet;
+    mPot += bet; 
 }
+
+void Table::DistributePot(const std::string& winner)
+{
+    mPlayers.at(winner)->WinPot(mPot);
+    mPot = 0;
+};
 } // namespace Poker::Model

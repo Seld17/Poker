@@ -4,6 +4,7 @@
 #include <Model/Player.h>
 
 #include <memory>
+#include <map>
 #include <vector>
 
 namespace Poker::Model
@@ -15,7 +16,7 @@ class Table
 {
     public:
     /// Constructor
-    Table(std::vector<std::unique_ptr<Player>> players, std::unique_ptr<Deck> deck);
+    Table(std::vector<std::string> playerOder, std::map<std::string, std::unique_ptr<Player>> players, std::unique_ptr<Deck> deck);
 
     /// Default copy constructor
     Table(const Table&) = default;
@@ -41,10 +42,17 @@ class Table
 
     void AddToPot(unsigned int bet);
 
+    void DistributePot(const std::string& winner);
+
     private:
     unsigned int mPot;
+    std::vector<std::string> mOrder;
 
-    std::vector<std::unique_ptr<Player>> mPlayers;
+    std::map<std::string, std::unique_ptr<Player>> mPlayers;
+
+    /// container for blinds, dealer, button
+    /// [title, name]
+    std::map<std::string, std::string> mTokens;
 
     std::unique_ptr<Deck> mDeck;
 

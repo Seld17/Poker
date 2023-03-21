@@ -32,6 +32,8 @@ class Player
 
     void AddCards(std::vector<std::shared_ptr<Card>> cards);
 
+    void WinPot(unsigned int pot);
+
     protected:
     /// Players betting money, avoiding decimals for simplicity
     unsigned int mCash;
