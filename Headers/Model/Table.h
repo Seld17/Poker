@@ -36,6 +36,11 @@ class Table
 
     void BurnCard();
 
+    /// used for flop, turn and river
+    void AddCommunityCards(unsigned int numberToFlip);
+
+    void AddToPot(unsigned int bet);
+
     private:
     unsigned int mPot;
 
