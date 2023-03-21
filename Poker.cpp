@@ -4,7 +4,6 @@
 #include "Poker.h"
 
 // includes to move
-#include <Model/Blind.h>
 #include <Model/Deck.h>
 #include <Model/Player.h>
 
