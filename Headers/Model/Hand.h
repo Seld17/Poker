@@ -11,8 +11,11 @@ namespace Poker::Model
 class Hand final
 {
     public:
-    /// Constructor
+    /// Default Constructor
     Hand() = default;
+
+    /// Constructor
+    explicit Hand(std::vector<std::shared_ptr<Card>> cards);
 
     /// Default copy constructor
     Hand(const Hand&) = default;
@@ -32,7 +35,11 @@ class Hand final
     /// Accessor to hand Value, higher is better with a max of 9
     int GetHandValue();
 
+    /// \throw If more than 5 cards end up in hand
+    void AddCards(std::vector<std::shared_ptr<Card>> cards);
+
     private:
+    void SortCards();
     bool isStraightFlush() const;
     bool isFourOfaKind() const;
 

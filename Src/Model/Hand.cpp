@@ -17,6 +17,8 @@ constexpr int STRAIGH_FLUSH{ 9 };
 
 namespace Poker::Model
 {
+Hand::Hand(std::vector<std::shared_ptr<Card>> cards) : mCards(cards) {}
+
 int Hand::GetHandValue()
 {
     if(mCards.size() == 0 || mCards.size() < 5)
@@ -24,8 +26,7 @@ int Hand::GetHandValue()
         // hand isn't full
         return 0;
     }
-    std::sort(mCards.begin(), mCards.end(), [](const Card& a, const Card& b) { return a.GetRank() < b.GetRank(); });
-
+    SortCards();
     if(isStraightFlush())
     {
         return STRAIGH_FLUSH;
@@ -37,6 +38,26 @@ int Hand::GetHandValue()
     }
 
     // todo implement other hand values
+}
+
+void Hand::AddCards(std::vector<std::shared_ptr<Card>> cards)
+{
+    if(cards.size() > mCards.size())
+    {
+        mCards.swap(cards);
+    }
+
+    for(const auto& card : cards)
+    {
+        mCards.emplace_back(std::move(card));
+    }
+    SortCards();
+}
+
+void Hand::SortCards()
+{
+    // todo a custom container that sorts by rank by definition might be better
+    std::sort(mCards.begin(), mCards.end(), [](const Card& a, const Card& b) { return a.GetRank() < b.GetRank(); });
 }
 
 bool Hand::isStraightFlush() const
@@ -61,7 +82,7 @@ bool Hand::isStraightFlush() const
 } // namespace Poker::Model
 
 bool Hand::isFourOfaKind() const
-{ 
+{
     // Four of a kind
     const auto firstRank = mCards.at(0)->GetRank();
     const auto secondRank = mCards.at(1)->GetRank();

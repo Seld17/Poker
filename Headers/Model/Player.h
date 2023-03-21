@@ -1,6 +1,9 @@
 
 #pragma once
 
+#include <Model/Hand.h>
+#include <Model/Card.h>
+
 namespace Poker::Model
 {
 class Player
@@ -27,8 +30,13 @@ public:
     bool Bet(unsigned int bet);
     bool Fold();
 
+    void AddCards(std::vector<std::shared_ptr<Card>> cards);
+
 private:
     /// Players betting money
     unsigned int mCash;
+    
+    /// Players current hand
+    Hand mHand;
 };
 } // namespace Poker
