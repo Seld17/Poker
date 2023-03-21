@@ -14,23 +14,22 @@ constexpr int FULL_HOUSE{ 7 };
 constexpr int FOUR_OF_A_KIND{ 8 };
 constexpr int STRAIGH_FLUSH{ 9 };
 
-// Assuming all poker variants play with 5 cards
-constexpr int MAX_HAND_SIZE(5);
 } // namespace
 
 namespace Poker::Model
 {
 Hand::Hand(std::vector<std::shared_ptr<Card>> cards) : mCards(cards)
 {
-    if(cards.size() > MAX_HAND_SIZE)
-    {
-        throw("Too many cards to create hand");
-    }
 }
 
-int Hand::GetHandValue()
+int Hand::GetHandValue(const std::vector<std::shared_ptr<Card>>& communityCards)
 {
-    if(mCards.size() == 0 || mCards.size() < MAX_HAND_SIZE)
+    // todo compute best hand 5/7 among 5 community cards and 2 hand cards
+    // This appears at first glance a computationally expensive operation on 
+    // top of requiring the evaluation of permutations (sawp in 0, 1 or 2 pocket cards)
+    // More effort should be spent on this to be both correct and efficient
+
+    if(mCards.size() == 0 )
     {
         // hand isn't full
         return 0;
@@ -54,11 +53,6 @@ void Hand::AddCards(std::vector<std::shared_ptr<Card>> cards)
 {
     const auto currentHandSize = mCards.size();
     const auto numberOfAddedCards = cards.size();
-    if(currentHandSize + numberOfAddedCards > MAX_HAND_SIZE)
-    {
-        // Assuming all poker variants play with 5 cards
-        throw("Too many cards dealt to hand");
-    }
     if(currentHandSize > numberOfAddedCards)
     {
         mCards.swap(cards);

@@ -34,6 +34,8 @@ class Player
 
     void WinPot(unsigned int pot);
 
+    unsigned int GetHandValue(const std::vector<std::shared_ptr<Card>>& communityCards);
+
     protected:
     /// Players betting money, avoiding decimals for simplicity
     unsigned int mCash;

@@ -3,8 +3,9 @@
 
 #include <Model/Player.h>
 
-#include <memory>
 #include <map>
+#include <memory>
+#include <utility>
 #include <vector>
 
 namespace Poker::Model
@@ -16,7 +17,7 @@ class Table
 {
     public:
     /// Constructor
-    Table(std::vector<std::string> playerOder, std::map<std::string, std::unique_ptr<Player>> players, std::unique_ptr<Deck> deck);
+    Table(std::map<std::string, std::unique_ptr<Player>> players, std::unique_ptr<Deck> deck);
 
     /// Default copy constructor
     Table(const Table&) = default;
@@ -33,7 +34,7 @@ class Table
     /// Destructor
     virtual ~Table() = default;
 
-    void DealPlayerHand();
+    void DealPlayerHand(const std::string& player, unsigned int numberOfCards);
 
     void BurnCard();
 
@@ -44,9 +45,16 @@ class Table
 
     void DistributePot(const std::string& winner);
 
+    /// \return winner's name
+    std::string ShowDown(const std::vector<std::string>& remainingPlayers);
+
+    /// \return winner's name
+    void Fold(const std::string& name);
+
     private:
+    std::string ResolveTieBreaker(const std::pair<std::string, std::string>& tiedPlayers) const;
+
     unsigned int mPot;
-    std::vector<std::string> mOrder;
 
     std::map<std::string, std::unique_ptr<Player>> mPlayers;
 

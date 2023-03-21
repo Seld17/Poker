@@ -17,7 +17,6 @@ class Hand final
     Hand() = default;
 
     /// Constructor
-    /// \throw if number of cards is greater than 5
     explicit Hand(std::vector<std::shared_ptr<Card>> cards);
 
     /// Default copy constructor
@@ -36,9 +35,8 @@ class Hand final
     virtual ~Hand() = default;
 
     /// Accessor to hand Value, higher is better with a max of 9
-    int GetHandValue();
+    int GetHandValue(const std::vector<std::shared_ptr<Card>>& communityCards);
 
-    /// \throw If more than 5 cards end up in hand
     void AddCards(std::vector<std::shared_ptr<Card>> cards);
 
     void DiscardHand();

@@ -35,7 +35,15 @@ class HoldEm
 
     void PlayRound();
 
+    void BettingRound();
+
     private:
+    // todo learn and implement blind changes and changes to player order
+    // unsure if this should be a model concept (shared across poker variations) or buisness concept (unique to hold em)
+    std::vector<std::string> mPlayerOrder;
+    
+    std::vector<std::string> mRemainingPlayerOrder;
+
     Model::Table mTable;
 };
 } // namespace Game
