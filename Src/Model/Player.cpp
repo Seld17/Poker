@@ -14,10 +14,9 @@ bool Player::Bet(unsigned int bet)
     return false;
 }
 
-bool Player::Fold()
+void Player::Fold()
 {
-    // todo disacrd "hand"
-    return false;
+    return mHand.DiscardHand();
 }
 
 void Player::AddCards(std::vector<std::shared_ptr<Card>> cards) 

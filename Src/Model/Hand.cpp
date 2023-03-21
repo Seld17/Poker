@@ -42,6 +42,11 @@ int Hand::GetHandValue()
 
 void Hand::AddCards(std::vector<std::shared_ptr<Card>> cards)
 {
+    if(cards.size() + mCards.size() > 5)
+    {
+        // Assuming all poker variants only play with 5 cards
+        throw("Too many cards dealt to hand");
+    }
     if(cards.size() > mCards.size())
     {
         mCards.swap(cards);
@@ -52,6 +57,11 @@ void Hand::AddCards(std::vector<std::shared_ptr<Card>> cards)
         mCards.emplace_back(std::move(card));
     }
     SortCards();
+}
+
+void Hand::DiscardHand() 
+{
+    mCards.clear(); 
 }
 
 void Hand::SortCards()

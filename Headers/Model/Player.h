@@ -28,7 +28,7 @@ public:
     virtual ~Player() = default;
 
     bool Bet(unsigned int bet);
-    bool Fold();
+    void Fold();
 
     void AddCards(std::vector<std::shared_ptr<Card>> cards);
 

@@ -38,6 +38,8 @@ class Hand final
     /// \throw If more than 5 cards end up in hand
     void AddCards(std::vector<std::shared_ptr<Card>> cards);
 
+    void DiscardHand();
+
     private:
     void SortCards();
     bool isStraightFlush() const;
